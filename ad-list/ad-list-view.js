@@ -7,7 +7,7 @@ export function buildAd(ad) {
 			<p class="card-text">${ad.description}</p>
 			<p class="card-text">${ad.price}</p>
 			<p class="card-text">${ad.sale ? 'Se vende' : 'Se compra'}</p>
-			<a href="#" class="btn btn-primary">Ver más</a>
+			<a href="ad-detail.html?adId=${ad.id}" class="btn btn-primary">Ver más</a>
 		</div>
 	</div>
 	`;
