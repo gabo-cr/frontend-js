@@ -6,7 +6,6 @@ export function adCreationController(adCreation) {
 		event.preventDefault();
 	
 		const formData = new FormData(adCreation);
-		console.log(formData);
 		const name = formData.get("name");
 		const description = formData.get("description");
 		const image = formData.get("image");

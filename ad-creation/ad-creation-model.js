@@ -1,5 +1,6 @@
 export const createAd = async (name, description, image, price, sale) => {
 	const url = "http://localhost:8000/api/ads";
+	const accessToken = localStorage.getItem('access-token');
 	
 	const body = {
 		name: name,
@@ -11,24 +12,25 @@ export const createAd = async (name, description, image, price, sale) => {
   
 	let response;
 	try {
-	  response = await fetch(url, {
-		method: "POST",
-		body: JSON.stringify(body),
-		headers: {
-		  'Content-type': 'application/json'
+		response = await fetch(url, {
+			method: "POST",
+			body: JSON.stringify(body),
+			headers: {
+				'Content-type': 'application/json',
+				'Authorization': `Bearer ${accessToken}`
+			}
+		});
+		
+		if (!response.ok) {
+			const data = await response.json()
+			throw new Error(data.message);
 		}
-	  });
-	  
-	  if (!response.ok) {
-		const data = await response.json()
-		throw new Error(data.message);
-	  }
 	} catch (error) {
-	  if (error.message) {
-		throw error.message;
-	  } else {
-		throw error;
-	  }
+		if (error.message) {
+			throw error.message;
+		} else {
+			throw error;
+		}
 	}
   }
   
