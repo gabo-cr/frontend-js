@@ -1,12 +1,14 @@
+import { sessionController } from "./session/session-controller.js";
+import { navbarController } from "./navbar/navbar-controller.js";
 import { adCreationController } from "./ad-creation/ad-creation-controller.js";
 
 document.addEventListener('DOMContentLoaded', () => {
-  const accessToken = localStorage.getItem('access-token');
+  const { validateAuthentication } = sessionController();
+  validateAuthentication();
 
-  if (!accessToken) {
-    window.location.href = 'index.html'
-  }
+  const navbar = document.querySelector('#navbar');
+  navbarController(navbar);
 
-  const adCreation = document.querySelector('#ad-creation');
+  const adCreation = document.querySelector('#ad-creation-form');
   adCreationController(adCreation);
 });
