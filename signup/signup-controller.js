@@ -1,4 +1,6 @@
 import { createUser } from "./signup-model.js";
+import { dispatchEvent } from "../utils/dispatchEvent.js";
+import { isEmailValid } from "../utils/formValidation.js";
 
 export function signupController(signupForm) {
 	signupForm.addEventListener('submit', (event) => {
@@ -10,10 +12,11 @@ export function signupController(signupForm) {
 	function handleSignupFormSubmit(signupForm) {
 		let errors = [];
 
-		if (!isEmailValid(signupForm)) {
+		const email = signupForm.querySelector('#email').value;
+		if (!isEmailValid(email)) {
 			errors.push('El email no tiene un formato correcto.')      
 		}
-	
+
 		if (!arePasswordsEqual(signupForm)) {
 			errors.push('Las contraseñas no son iguales.')
 		}
@@ -25,27 +28,19 @@ export function signupController(signupForm) {
 		}
 	}
 
-	function isEmailValid(signupForm) {
-		const email = signupForm.querySelector('#email');
-		const emailRegExp = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
-
-		return emailRegExp.test(email.value)
-	}
-
-	function arePasswordsEqual(signupForm) {
-		const password = signupForm.querySelector('#password');
-		const passwordConfirmation = signupForm.querySelector('#password-confirmation');
-		
-		return password.value === passwordConfirmation.value;
-	}
-
 	function showFormErrors(errors) {
 		for (const error of errors) {
 			dispatchEvent('signup-notification', {
 				message: error,
 				type: 'error'
-			}, signupForm)
+			}, signupForm);
 		}
+	}
+
+	function arePasswordsEqual(signupForm) {
+		const password = signupForm.querySelector('#password');
+		const passwordConfirmation = signupForm.querySelector('#password-confirmation');
+		return password.value === passwordConfirmation.value;
 	}
 
 	async function signupUser(signupForm) {
@@ -54,12 +49,20 @@ export function signupController(signupForm) {
 
 		try {	
 			await createUser(email.value, password.value);
+			dispatchEvent('signup-notification', {
+				message: 'Te has registrado correctamente.',
+				type: 'success',
+				autoRemove: true
+			}, signupForm);
 			
 			setTimeout(() => {
-				window.location.href = 'index.html';
+				window.location = 'index.html';
 			}, 2000);
 		} catch (error) {
-			alert(error);
+			dispatchEvent('signup-notification', {
+				message: error,
+				type: 'error'
+			}, signupForm);
 		}
 	}
   
