@@ -13,24 +13,24 @@
 			<div class="container-fluid">
 				<form id="ad-creation-form">
 					<div class="mb-3">
-						<label for="name" class="form-label">Nombre</label>
-						<input type="text" class="form-control" id="name" name="name" placeholder="Título del anuncio">
+						<label for="name" class="form-label">Nombre*</label>
+						<input type="text" class="form-control" id="name" name="name" placeholder="Título del anuncio" required>
 					</div>
 					<div class="mb-3">
-						<label for="description" class="form-label">Descripción</label>
-						<textarea class="form-control" id="description" name="description" rows="3" placeholder="Descripción del producto"></textarea>
+						<label for="description" class="form-label">Descripción*</label>
+						<textarea class="form-control" id="description" name="description" rows="3" placeholder="Descripción del producto" required></textarea>
 					</div>
 					<div class="mb-3">
 						<label for="image" class="form-label">Imagen</label>
 						<input type="text" class="form-control" id="image" name="image" placeholder="URL de la imagen del producto">
 					</div>
 					<div class="mb-3">
-						<label for="price" class="form-label">Precio</label>
-						<input type="number" class="form-control" id="price" name="price" placeholder="Precio" min="0" step="0.01">
+						<label for="price" class="form-label">Precio*</label>
+						<input type="number" class="form-control" id="price" name="price" placeholder="Precio" min="0" step="0.01" required>
 					</div>
 					<div class="mb-3">
-						<label for="sale" class="form-label">Tipo de anuncio</label>
-						<select class="form-select" id="sale" name="sale">
+						<label for="sale" class="form-label">Tipo de anuncio*</label>
+						<select class="form-select" id="sale" name="sale" required>
 							<option value="0">Se busca</option>
 							<option value="1">Se vende</option>
 						</select>

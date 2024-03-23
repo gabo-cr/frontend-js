@@ -5,6 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.querySelector('#navbar');
   navbarController(navbar);
 
-  const adDetail = document.querySelector('.ad-detail .container-fluid .row');
+  const adDetail = document.querySelector('.ad-detail');
   adDetailController(adDetail);
 });
