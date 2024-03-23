@@ -6,7 +6,6 @@ export function buildNavbar() {
 		<a href="${baseURL}/index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
 			<span class="fs-4">Ballapop</span>
 		</a>
-
 		<ul class="nav nav-pills">
 			<li class="nav-item"><a href="${baseURL}/login.html" class="btn btn-outline-primary mx-2">Iniciar sesión</a></li>
 			<li class="nav-item"><a href="${baseURL}/signup.html" class="btn btn-primary">Registrarse</a></li>
@@ -21,8 +20,8 @@ export function buildAuthenticatedNavbar() {
 		<a href="${baseURL}/index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
 			<span class="fs-4">Ballapop</span>
 		</a>
-
 		<ul class="nav nav-pills">
+			<li class="nav-item"><a href="${baseURL}/ad-creation.html" class="btn btn-primary mx-2">Crear anuncio</a></li>
 			<li class="nav-item"><button id="btn-logout" class="btn btn-outline-primary">Cerrar sesión</button></li>
 		</ul>
 	</header>
