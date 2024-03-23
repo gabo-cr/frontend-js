@@ -1,4 +1,7 @@
 import { loginUser } from "./login-model.js";
+import { session } from "../utils/session.js";
+
+const { setAccessToken } = session();
 
 export const loginController = (loginForm) => {
 	loginForm.addEventListener('submit', (event) => {
@@ -11,7 +14,7 @@ export const loginController = (loginForm) => {
 		const { email, password } = getLoginData(loginForm);
 		try {
 			const jwt = await loginUser(email, password);
-			localStorage.setItem('access-token', jwt);
+			setAccessToken(jwt)
 			window.location = './index.html';
 		} catch (error) {
 			alert(error);

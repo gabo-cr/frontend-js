@@ -1,6 +1,10 @@
+import { session } from "../utils/session.js";
+
+const { getAccessToken } = session();
+
 export const createAd = async (name, description, image, price, sale) => {
 	const url = "http://localhost:8000/api/ads";
-	const accessToken = localStorage.getItem('access-token');
+	const accessToken = getAccessToken();
 	
 	const body = {
 		name: name,

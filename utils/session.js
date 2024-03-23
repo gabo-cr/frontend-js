@@ -1,13 +1,21 @@
-export function sessionController() {
+export function session() {
 
 	function validateAuthentication() {
 		if (!isUserLoggedIn()) {
 			window.location.href = 'index.html';
 		}
 	}
+
+	function getAccessToken() {
+		return localStorage.getItem('access-token');
+	}
+
+	function setAccessToken(token) {
+		localStorage.setItem('access-token', token);
+	}
 	
 	function isUserLoggedIn() {
-		return localStorage.getItem('access-token');
+		return getAccessToken() ? true : false;
 	}
 
 	function logout() {
@@ -16,6 +24,8 @@ export function sessionController() {
 
 	return {
 		validateAuthentication,
+		getAccessToken,
+		setAccessToken,
 		isUserLoggedIn,
 		logout
 	}

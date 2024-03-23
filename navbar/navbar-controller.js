@@ -1,8 +1,8 @@
 import { buildAuthenticatedNavbar, buildNavbar } from "./navbar-view.js";
-import { sessionController } from "../session/session-controller.js";
+import { session } from "../utils/session.js";
 
 export const navbarController = (navbar) => {
-	const { isUserLoggedIn, logout } = sessionController();
+	const { isUserLoggedIn, logout } = session();
 
 	try {
 		if (isUserLoggedIn()) {
