@@ -29,3 +29,7 @@ export function buildAdDetail(ad) {
 	</div>
 	`;
 }
+
+export function buildAdDetailActions() {
+	return `<button disabled id="removeAdButton" class="btn btn-danger">Eliminar el anuncio</button>`;
+}
