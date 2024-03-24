@@ -1,14 +1,33 @@
+function buildImage(ad) {
+	let imageElement = '';
+	if (ad.image) {
+		imageElement = `<img src="${ad.image}" class="card-img-top" alt="${ad.name}">`;
+	} else {
+		imageElement = '<div class="default-img">sin imagen</div>';
+	}
+	return imageElement;
+}
+
 export function buildAd(ad) {
+	const image = buildImage(ad);
+
 	return `
-	<div class="card ad">
-		<img src="${ad.image}" class="card-img-top" alt="${ad.name}">
-		<div class="card-body">
-			<h5 class="card-title">${ad.name}</h5>
-			<p class="card-text">${ad.description}</p>
-			<p class="card-text">${ad.price}</p>
-			<p class="card-text">${ad.sale ? 'Se vende' : 'Se compra'}</p>
-			<a href="ad-detail.html?adId=${ad.id}" class="btn btn-primary">Ver más</a>
-		</div>
+	<div class="card mb-4">
+		<a href="/ad-detail.html?adId=${ad.id}">
+			<div class="img">
+				${image}
+			</div>
+			<div class="card-body">
+				<div class="header">
+					<h5 class="title">${ad.name}</h5>
+					<p class="description">${ad.description}</p>
+				</div>
+				<div class="footer">
+					<span class="price">${ad.price} €</span>
+					<span class="sale">${ad.sale ? 'Se vende' : 'Se compra'}</span>
+				</div>
+			</div>
+		</a>
 	</div>
 	`;
 }
