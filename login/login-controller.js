@@ -2,10 +2,14 @@ import { loginUser } from "./login-model.js";
 import { session } from "../utils/session.js";
 import { dispatchEvent } from "../utils/dispatchEvent.js";
 import { isEmailValid } from "../utils/formValidation.js";
+import { loaderController } from "../loader/loader-controller.js";
 
 const { setAccessToken } = session();
 
 export const loginController = (loginForm) => {
+	const loader = loginForm.querySelector('#loader');
+	const { showLoader, hideLoader } = loaderController(loader);
+
 	loginForm.addEventListener('submit', (event) => {
 		event.preventDefault();
 		handleLoginFormSubmit(loginForm);
@@ -38,23 +42,19 @@ export const loginController = (loginForm) => {
 	const signinUser = async (loginForm) => {
 		const { email, password } = getLoginData(loginForm);
 		try {
+			showLoader();
+
 			const jwt = await loginUser(email, password);
 			setAccessToken(jwt);
 
-			dispatchEvent('login-notification', {
-				message: 'Has iniciado sesión correctamente.',
-				type: 'success',
-				autoRemove: true
-			}, loginForm);
-
-			setTimeout(() => {
-				window.location = 'index.html';
-			}, 1000);
+			window.location = 'index.html';
 		} catch (error) {
 			dispatchEvent('login-notification', {
 				message: error,
 				type: 'error'
 			}, loginForm);
+		} finally {
+			hideLoader();
 		}
 	};
   

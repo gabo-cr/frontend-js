@@ -1,11 +1,14 @@
 import { createUser } from "./signup-model.js";
 import { dispatchEvent } from "../utils/dispatchEvent.js";
 import { isEmailValid } from "../utils/formValidation.js";
+import { loaderController } from "../loader/loader-controller.js";
 
 export function signupController(signupForm) {
+	const loader = signupForm.querySelector('#loader');
+	const { showLoader, hideLoader } = loaderController(loader);
+
 	signupForm.addEventListener('submit', (event) => {
 		event.preventDefault();
-		
 		handleSignupFormSubmit(signupForm);
 	});
 
@@ -47,10 +50,13 @@ export function signupController(signupForm) {
 		const email = signupForm.querySelector('#email');
 		const password = signupForm.querySelector('#password');
 
-		try {	
+		try {
+			showLoader();
+
 			await createUser(email.value, password.value);
+			
 			dispatchEvent('signup-notification', {
-				message: 'Te has registrado correctamente.',
+				message: 'El usuario se registró correctamente.',
 				type: 'success',
 				autoRemove: true
 			}, signupForm);
@@ -63,6 +69,8 @@ export function signupController(signupForm) {
 				message: error,
 				type: 'error'
 			}, signupForm);
+		} finally {
+			hideLoader();
 		}
 	}
   
