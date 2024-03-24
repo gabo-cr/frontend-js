@@ -1,0 +1,41 @@
+.ad-detail {
+	padding-bottom: 1rem;
+}
+.card, .notifications {
+	max-width: 480px;
+	width: 100%;
+	margin: 0 auto;
+}
+.card .img {
+	width: 100%;
+    height: 630px;
+    overflow: hidden;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	border-bottom: 1px solid #d2d2d2;
+	background-color: #d2d2d2;
+}
+.card img {
+	width: 100%;
+}
+.card .title {
+	font-size: 1.5rem;
+}
+.card .footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin-top: 20px;
+}
+.card .price {
+	font-size: 1.3rem;
+	font-weight: 600;
+}
+.card .sale {
+	font-style: italic;
+}
+#removeAdButton {
+	max-width: 480px;
+	margin: 0 auto;
+}

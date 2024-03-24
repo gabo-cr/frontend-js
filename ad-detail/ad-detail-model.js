@@ -24,12 +24,17 @@ export async function getAdDetail(adId) {
 	const url = `http://localhost:8000/api/ads/${adId}`;
   
 	try {
-	  const response = await fetch(url);
-	  const data = await response.json();
-	  const ad = parseAd(data);
-	  return ad;
+		const response = await fetch(url);
+		if (!response.ok) {
+			throw new Error('Error obteniendo el anuncio.');
+		}
+		if (response.ok) {
+			const data = await response.json();
+			const ad = parseAd(data);
+			return ad;
+		}
 	} catch (error) {
-	  throw new Error('Error obteniendo el anuncio')
+	  	throw new Error('Error obteniendo el anuncio.');
 	}
   
 }
