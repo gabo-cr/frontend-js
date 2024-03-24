@@ -1,0 +1,56 @@
+{
+  "ads": [
+    {
+      "name": "Lámpara de mesa seta",
+      "description": "Lampara de mesa seta años 80. Funciona.",
+      "image": "https://cdn.wallapop.com/images/10420/ge/2j/__/c10420p991091715/i4806867798.jpg?pictureSize=W640",
+      "price": "100",
+      "sale": true,
+      "userId": 1,
+      "updatedAt": "2024-03-23T07:01:45.065Z",
+      "id": 1
+    },
+    {
+      "name": "Lámpara de pie",
+      "description": "Funciona perfectamente. Como nueva.",
+      "image": "https://cdn.wallapop.com/images/10420/gd/uh/__/c10420p990716499/i4804930002.jpg?pictureSize=W640",
+      "price": "15",
+      "sale": true,
+      "userId": 1,
+      "updatedAt": "2024-03-23T07:01:45.065Z",
+      "id": 2
+    },
+    {
+      "name": "Anuncio 2",
+      "description": "Este es el anuncio 2",
+      "image": "",
+      "price": "14.25",
+      "sale": false,
+      "userId": 1,
+      "updatedAt": "2024-03-23T07:01:45.065Z",
+      "id": 4
+    },
+    {
+      "name": "Nuevo anuncio tres mil",
+      "description": "Nuevo anuncio tres mil",
+      "image": "",
+      "price": "11.05",
+      "sale": false,
+      "userId": 2,
+      "updatedAt": "2024-03-24T05:01:44.051Z",
+      "id": 8
+    }
+  ],
+  "users": [
+    {
+      "username": "gabrielchavezriera@gmail.com",
+      "password": "$2b$10$PSOyqd1h1XQI7iKFeIIVGuNduCNFsSJG8yWiIwhQ56uklIWdPRM7O",
+      "id": 1
+    },
+    {
+      "username": "gabs@mail.com",
+      "password": "$2b$10$PSOyqd1h1XQI7iKFeIIVGuNduCNFsSJG8yWiIwhQ56uklIWdPRM7O",
+      "id": 2
+    }
+  ]
+}
