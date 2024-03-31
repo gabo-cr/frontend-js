@@ -12,7 +12,10 @@ export const navbarController = (navbar) => {
 			logoutButton.addEventListener('click', () => {
 				logout();
 				navbarController(navbar);
-			})
+				setTimeout(() => {
+					window.location = 'index.html';
+				}, 2000);
+			});
 		} else {
 			navbar.innerHTML = buildNavbar();
 		}
