@@ -35,7 +35,8 @@ export function signupController(signupForm) {
 		for (const error of errors) {
 			dispatchEvent('signup-notification', {
 				message: error,
-				type: 'error'
+				type: 'error',
+				autoRemove: true
 			}, signupForm);
 		}
 	}
@@ -67,7 +68,8 @@ export function signupController(signupForm) {
 		} catch (error) {
 			dispatchEvent('signup-notification', {
 				message: error,
-				type: 'error'
+				type: 'error',
+				autoRemove: true
 			}, signupForm);
 		} finally {
 			hideLoader();

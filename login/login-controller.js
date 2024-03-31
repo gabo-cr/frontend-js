@@ -34,7 +34,8 @@ export const loginController = (loginForm) => {
 		for (const error of errors) {
 			dispatchEvent('login-notification', {
 				message: error,
-				type: 'error'
+				type: 'error',
+				autoRemove: true
 			}, loginForm);
 		}
 	};
@@ -51,7 +52,8 @@ export const loginController = (loginForm) => {
 		} catch (error) {
 			dispatchEvent('login-notification', {
 				message: error,
-				type: 'error'
+				type: 'error',
+				autoRemove: true
 			}, loginForm);
 		} finally {
 			hideLoader();
